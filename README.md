@@ -8,7 +8,7 @@
 
 ### Base Datasets
 
-We regard base datasets as datasets that are solely used for later mapping of external datasets.
+We regard base datasets as datasets that are solely used for later mapping of external datasets. Note that `DATA_DIR` in `src/configs/constants.py` is the path to your `data` folder.
 
 #### PTB-XL
 
