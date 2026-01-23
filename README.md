@@ -2,9 +2,9 @@
 
 ## Installation
 
-1. if git clone, then `uv sync`
+1. if git clone and `uv` installed, just `cd` into the repo and `uv sync`.
 
-2. To run just do `uv run $PATH_TO_FILE`
+2. To run just do `uv run $PATH_TO_FILE`. There are examples in `scripts/`
 
 ### Base Datasets
 
@@ -85,42 +85,46 @@ Mapping datasets are datasets that are mapped to the base datasets and subsequen
 
 #### ECG-QA dataset curated by [ECG-QA, Oh et al.](https://github.com/Jwoo5/ecg-qa)
 
-1. To download the ECG-QA dataset, please execute the following command in the `data` folder:
-
-`git clone https://github.com/Jwoo5/ecg-qa.git`
-
-2. We exactly follow the instructions in [this section of the repository](https://github.com/Jwoo5/ecg-qa?tab=readme-ov-file#usage-notes) for mapping the PTB-XL and MIMIC IV ECG dataset to the question and answers. `cd` into ecg-qa and execute the following commands in the terminal to prepare the ECG-QA dataset.
+1. We exactly follow the instructions in [this section of the repository](https://github.com/Jwoo5/ecg-qa?tab=readme-ov-file#usage-notes) for mapping the PTB-XL and MIMIC IV ECG dataset to the question and answers. `cd` into ecg-qa and execute the following commands in the terminal to prepare the ECG-QA dataset.
 
 3. To map the ECG-QA dataset to mimic and ptb, execute the following scripts respectively.
 
 ```
-uv run src/datasets/map/ecg-qa-master/mapping_ptbxl_samples.py src/datasets/map/ecg-qa-master/ecgqa/ptbxl/ --ptbxl-data-dir ../data/ptb_xl
+uv run src/datasets/map/ecg_qa/mapping_ptbxl_samples.py src/datasets/map/ecg_qa/ecgqa/ptbxl/ --ptbxl-data-dir ../data/ptb_xl
 ```
 
 ```
-python mapping_mimic_iv_ecg_samples.py ecgqa/mimic-iv-ecg \
---mimic-iv-ecg-data-dir ../mimic
+uv run src/datasets/map/ecg_qa/mapping_mimic_iv_ecg_samples.py src/datasets/map/ecg_qa/ecgqa/mimic-iv-ecg --mimic-iv-ecg-data-dir ../data/mimic
 ```
 
 3. After mapping the datasets, you should have an output folder in the `data/ecg-qa` folder with the mapped `paraphrased` and `template` question and answers.
 
 #### Pretrain MIMIC dataset curated by [ECG-Chat, Zhao et al.](https://github.com/YubaoZhao/ECG-Chat)
 
-1. Next create a `data/pretrain_mimic` directory and download the `pretrain_mimic.json` file from this [dropbox link](https://www.dropbox.com/scl/fo/ccq5dxmdgg4shf02yjn8c/ANOQ1Hzj4KwHqa1b9r80uzc?rlkey=teysp3v6hg6o9uko2i4zbbjpn&e=1&st=exu3i9oo&dl=0).
+1. Download the `pretrain_mimic.json` file from this [dropbox link](https://www.dropbox.com/scl/fo/ccq5dxmdgg4shf02yjn8c/ANOQ1Hzj4KwHqa1b9r80uzc?rlkey=teysp3v6hg6o9uko2i4zbbjpn&e=1&st=exu3i9oo&dl=0) and place it in the corresponding folder src/datasets/map/pretrain_mimic/.
 
 #### Instruct 45k MIMIC dataset curated by [ECG-Chat, Zhao et al.](https://github.com/YubaoZhao/ECG-Chat)
 
-1. Next create a `data/ecg_instruct_45k` directory and download the `ecg_instruct_45k.json` file from this [link](https://github.com/YubaoZhao/ECG-Chat/blob/master/llava/playground/data/ecg_instruct_45k.json).
+1. Download the `ecg_instruct_45k.json` file from this [link](https://github.com/YubaoZhao/ECG-Chat/blob/master/llava/playground/data/ecg_instruct_45k.json) and place it in the corresponding folder src/datasets/map/ecg_intruct_45k/.
 
 
 #### ECG Instruct Pulse dataset curated by [PULSE, Liu et al.](https://github.com/AIMedLab/PULSE)
 
-1. Create a 'data/ecg_instruct_pulse' directory and downlod the `ECGInstruct.json`from this [link](https://huggingface.co/datasets/PULSE-ECG/ECGInstruct/tree/main). Then rename it to `ecg_instruct_pulse.json`.
+1. Downlod the `ECGInstruct.json`from this [link](https://huggingface.co/datasets/PULSE-ECG/ECGInstruct/tree/main). Rename it to `ecg_instruct_pulse.json` and place it in the corresponding folder src/datasets/map/ecg_instruct_pulse.
 
 #### ECG Bench Pulse dataset curated by [PULSE, Liu et al.](https://github.com/AIMedLab/PULSE)
 
-1. The ECG Bench Pulse dataset is exclusively on HuggingFace with `.parquet` files, therefore, we utilize the `datasets` library directly to download the dataset. All you have to do is simply define `map_data` in the preprocess script as `ecg_bench_pulse`.
+1. The ECG Bench Pulse dataset is exclusively on HuggingFace with `.parquet` files, therefore, we utilize the `datasets` library directly to download the dataset.
 
 #### ECG Grounding Datasets curated by [GEM, Lan et al.](https://github.com/lanxiang1017/GEM)
 
-1. Create a `data/ecg_grounding` directory and download the `ECG_Grounding_30k.json`, `ecg-grounding-test.json` and `grounding_train_30k.json` from this [link](https://huggingface.co/datasets/LANSG/ECG-Grounding/tree/main/ecg_jsons). A quick note is that `grounding_train_30k.json` is a subset of `ECG_Grounding_30k.json`, where `ECG_Grounding_30k.json` contains all 30k ECG grounding samples found in `grounding_train_30k.json`, with additional ECG conversational data from the ECG Instruct PULSE dataset.
+1. Download the `ECG_Grounding_30k.json`, `ecg-grounding-test.json` and `grounding_train_30k.json` from this [link](https://huggingface.co/datasets/LANSG/ECG-Grounding/tree/main/ecg_jsons) and place it in the corresponding folder src/datasets/map/ecg_grounding. A quick note is that `grounding_train_30k.json` is a subset of `ECG_Grounding_30k.json`, where `ECG_Grounding_30k.json` contains all 30k ECG grounding samples found in `grounding_train_30k.json`, with additional ECG conversational data from the ECG Instruct PULSE dataset.
+
+### ECG Byte Training
+
+We also implement training the BPE algorithm from [ECG-Byte](https://arxiv.org/abs/2412.14373). This should be trained only after preprocessing the MIMIC-IV base dataset. 
+Please execute `bash scripts/train_ecg_byte.sh`.
+
+### Hugging Face upload
+
+We have also released the code for uploading the preprocessed, mapped datasets onto HuggingFace datasets. Please view `scripts/upload_hf.sh` for the script!

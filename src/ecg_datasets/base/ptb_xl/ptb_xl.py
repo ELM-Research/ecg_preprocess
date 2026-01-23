@@ -19,7 +19,7 @@ class PTB_XL(BaseDataset):
         df.to_csv(f"{DATA_DIR}/{self.args.base}/{self.args.base}.csv", index=False)
     
     def translate(self, df, batch_size = 24):
-        pipe = pipeline("image-text-to-text", model="google/translategemma-27b-it", 
+        pipe = pipeline("image-text-to-text", model="google/translategemma-12b-it", 
                         device="cuda", dtype=torch.bfloat16,)
         df = df.copy()
         reports = df["report"].tolist()

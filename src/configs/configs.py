@@ -5,7 +5,7 @@ def get_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=0, help="Random Seed")
     parser.add_argument("--dev", action="store_true", default=None, help="Development mode")
     parser.add_argument("--base", type=str, default=None, 
-                        choices=["mimic_iv", "ptb_xl", "code15", "cpsc", "csn", "batch9", "batch10"],
+                        choices=["mimic_iv", "ptb_xl", "code15", "cpsc", "csn",],
                         help="Base dataset to preprocess")
     parser.add_argument("--map", type=str, default=None,
                         choices=["pretrain_mimic", "ecg_grounding", "ecg_qa_mimic_iv",
@@ -16,7 +16,7 @@ def get_args() -> argparse.Namespace:
     parser.add_argument("--mix", type=str, default=None, help="Mix data: comma-separated list of JSON filenames")
     parser.add_argument("--target_sf", type=int, default=250, help="Target sampling frequency")
     parser.add_argument("--upload_hf", action="store_true", default = None, help = "Specify if you want to upload_hf")
-    parser.add_argument("--num_cores", type=int, default=128, help="Number of cores for parallel processing")
+    parser.add_argument("--num_cores", type=int, default=32, help="Number of cores for parallel processing")
     parser.add_argument("--segment_len", type=int, default=2500, help="ECG Segment Length")
     parser.add_argument("--train_ecg_byte", action = "store_true", default = None, help = "Train ECG Byte BPE algorithm")
     parser.add_argument("--ecg_tokenizer", type = str, default = None, help = "path to ECG Tokenizer")

@@ -1,4 +1,5 @@
-DATA_DIR = "../data"
+# DATA_DIR = "../data"
+DATA_DIR = "../ECG-Bench/ecg_bench/data"
 
 LOG_DIR = "./.logs"
 

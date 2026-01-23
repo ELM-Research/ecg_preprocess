@@ -46,52 +46,6 @@ class BaseDataset:
             return cleaned_df
         self.logger.info("No NaN values found in DataFrame")
         return df
-    
-    # def create_dataset(self, df):
-    #     for idx in range(len(df)):
-    #         row = df.iloc[idx]
-    #         row_dict = row.to_dict()
-    #         ecg_out = self.open_ecg(row_dict)
-    #         report = ecg_out["report"]
-    #         ecg = ecg_out["ecg"]
-    #         sf = ecg_out["sf"]
-    #         file_name = ecg_out["file_name"]
-
-    #         if self.args.base == "mimic_iv" or self.args.base == "code15":
-    #             ecg = self.reorder_indices(ecg)
-            
-    #         if sf != self.args.target_sf:
-    #             downsampled_ecg = self.nsample_ecg(ecg, orig_fs=sf, target_fs=self.args.target_sf)
-    #         else:
-    #             downsampled_ecg = ecg
-            
-    #         segmented_ecg, segmented_report = self.segment_ecg(downsampled_ecg, report)
-    #         assert len(segmented_report) == segmented_ecg.shape[0]
-                        
-    #         if np.any(np.isnan(segmented_ecg)) or np.any(np.isinf(segmented_ecg)):
-    #             return None
-            
-    #         for i in range(len(segmented_report)):
-    #             save_path = f"{self.save_dir}/{file_name}_{i}.npy"
-    #             save_dic = {
-    #                 "ecg" : np.transpose(segmented_ecg[i], (1, 0)),
-    #                 "report" : segmented_report[i],
-    #                 "ecg_path" : ecg_out["file_path"],
-    #                 "original_sf" : sf,
-    #                 "target_sf" : self.args.target_sf,
-    #                 "segment_len" : self.args.segment_len,
-    #                 "npy_path" : save_path
-    #             }
-    #             if self.args.batch_labels:
-    #                 for label in BATCH_LABEL_DICT.keys():
-    #                     print(f"LABEL: {label}")
-    #                     if any(p in segmented_report[i].lower() for p in BATCH_LABEL_DICT[label]):
-    #                         print("ONE LABEL", segmented_report[i])
-    #                         save_dic[label] = 1
-    #                     else:
-    #                         print("ZERO LABEL",segmented_report[i])
-    #                         save_dic[label] = 0
-    #                 input()
 
     def create_dataset(self, df):
         from concurrent.futures import ProcessPoolExecutor, as_completed

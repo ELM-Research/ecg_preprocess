@@ -1,1 +1,0 @@
-from .ecg_qa import ECGQA
