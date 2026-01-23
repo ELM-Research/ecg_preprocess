@@ -18,7 +18,7 @@ class ECGGrounding(MapDataset):
         return data
     
     def process_instance(self, instance):
-        text = ["conversations"]
+        text = instance["conversations"]
         file_name = instance["ecg"]
         ecg_path, saved_dir = self.get_ecg_path(file_name)
         name = instance.get("name", "")
