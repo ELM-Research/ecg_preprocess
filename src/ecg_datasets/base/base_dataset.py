@@ -99,12 +99,6 @@ class BaseDataset:
                     "segment_len" : self.args.segment_len,
                     "npy_path" : save_path
                 }
-                if self.args.batch_labels:
-                    for label in BATCH_LABEL_DICT.keys():
-                        if any(p in segmented_report[i].lower() for p in BATCH_LABEL_DICT[label]):
-                            save_dic[label] = 1
-                        else:
-                            save_dic[label] = 0
                 
                 np.save(save_path, save_dic)
             return True
