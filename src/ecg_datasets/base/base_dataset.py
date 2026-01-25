@@ -7,7 +7,7 @@ import wfdb
 from scipy import interpolate
 
 from utils.file_dir import ensure_directory_exists
-from configs.constants import DATA_DIR, BATCH_LABEL_DICT
+from configs.constants import DATA_DIR
 
 class BaseDataset:
     def __init__(self, args, logger):
