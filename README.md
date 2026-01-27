@@ -10,6 +10,8 @@
 
 We regard base datasets as datasets that are solely used for later mapping of external datasets. Note that `DATA_DIR` in `src/configs/constants.py` is the path to your `data` folder.
 
+These base datasets are enough if you want to solely use the ECG datasets for pretraining. The output of the base dataset preprocessing pipeline is a folder with .npy files that have the ECG signal matrix and a textual report if available.
+
 #### PTB-XL
 
 1. Please download the PTB-XL dataset through this [link](https://physionet.org/static/published-projects/ptb-xl/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3.zip).
