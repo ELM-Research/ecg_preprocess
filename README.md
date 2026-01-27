@@ -83,7 +83,7 @@ wget https://physionet.org/static/published-projects/challenge-2020/classificati
 
 ### Mapping Datasets
 
-Mapping datasets are datasets that are mapped to the base datasets and subsequently used for all experiments.
+Mapping datasets are datasets that are mapped to the base datasets. Create these datasets if you want to train a ECG-Langauge Model using [ECG-Bench](github.com/willxxy/ECG-Bench).
 
 #### ECG-QA dataset curated by [ECG-QA, Oh et al.](https://github.com/Jwoo5/ecg-qa)
 
