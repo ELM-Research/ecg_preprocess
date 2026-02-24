@@ -26,3 +26,15 @@ class MapDataset:
         print(f"Length of available ecgs: {len(self.available_ecgs)}")
         print(f"Valid instances: {len(self.valid_instances)}")
         save_json(self.valid_instances, self.save_dir_json)
+
+
+class SyntheticDataset:
+    def __init__(self, args, logger):
+        self.args = args
+        self.logger = logger
+        self.valid_instances = []
+
+    def map_data(self,):
+        data = self.get_map_data()                   
+        print(f"Total instances for {self.args.map}: {len(data)}")
+        save_json(data, self.save_dir_json)
