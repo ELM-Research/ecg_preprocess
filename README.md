@@ -9,8 +9,25 @@
 ### Base Datasets
 
 We regard base datasets as datasets that are solely used for later mapping of external datasets. Note that `DATA_DIR` in `src/configs/constants.py` is the path to your `data` folder.
+The structure in which the `data` folder should be in is the following:
 
-These base datasets are enough if you want to solely use the ECG datasets for pretraining. The output of the base dataset preprocessing pipeline is a folder with .npy files that have the ECG signal matrix and a textual report if available.
+```
+data
+├── csn
+│   ├── preprocessed_1250
+│   ├── preprocessed_500
+│   └── preprocessed_2500
+├── cpsc
+│   └── ...
+├── ptb_xl
+│   └── ...
+├── mimic_iv
+│   └── ...
+└── code15
+    └── ...
+```
+
+These base datasets are enough if you want to solely use the ECG datasets for pretraining with [https://github.com/ELM-Research/ecg_nn](https://github.com/ELM-Research/ecg_nn). The output of the base dataset preprocessing pipeline is a folder with .npy files that have the ECG signal matrix and a textual report if available.
 
 #### PTB-XL
 
@@ -83,7 +100,7 @@ wget https://physionet.org/static/published-projects/challenge-2020/classificati
 
 ### Mapping Datasets
 
-Mapping datasets are datasets that are mapped to the base datasets. Create these datasets if you want to train a ECG-Langauge Model using [ECG-Bench](github.com/willxxy/ECG-Bench).
+Mapping datasets are datasets that are mapped to the base datasets. Create these datasets if you want to train a ECG-Langauge Model using [https://github.com/ELM-Research/ELM](https://github.com/ELM-Research/ELM).
 
 #### ECG-QA dataset curated by [ECG-QA, Oh et al.](https://github.com/Jwoo5/ecg-qa)
 
