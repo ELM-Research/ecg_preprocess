@@ -18,5 +18,8 @@ def build_map_dataset(args, logger):
     elif args.map == "ecg_instruct_pulse":
         from ecg_datasets.map.ecg_instruct_pulse import ECGInstructPulse
         map_dataset_builder = ECGInstructPulse(args, logger)
+    elif args.map == "synthetic_signal_type":
+        from ecg_datasets.map.synthetic_signal_type import SyntheticSignalType
+        map_dataset_builder = SyntheticSignalType(args, logger)
 
     map_dataset_builder.map_data()
