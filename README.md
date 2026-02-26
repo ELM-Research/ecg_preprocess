@@ -27,7 +27,7 @@ data
     └── ...
 ```
 
-These base datasets are enough if you want to solely use the ECG datasets for pretraining with [https://github.com/ELM-Research/ecg_nn](https://github.com/ELM-Research/ecg_nn). The output of the base dataset preprocessing pipeline is a folder with .npy files that have the ECG signal matrix and a textual report if available.
+These base datasets are enough if you want to solely use the ECG datasets for pretraining with [https://github.com/ELM-Research/ecg_nn](https://github.com/ELM-Research/ecg_nn) or finetuning an ELM with [https://github.com/ELM-Research/ELM](https://github.com/ELM-Research/ELM). The output of the base dataset preprocessing pipeline is a folder with .npy files that have the ECG signal matrix and a textual report if available.
 
 #### PTB-XL
 
@@ -100,7 +100,17 @@ wget https://physionet.org/static/published-projects/challenge-2020/classificati
 
 ### Mapping Datasets
 
-Mapping datasets are datasets that are mapped to the base datasets. Create these datasets if you want to train a ECG-Langauge Model using [https://github.com/ELM-Research/ELM](https://github.com/ELM-Research/ELM).
+Mapping datasets are datasets that are mapped to the base datasets. Create these datasets if you want to transform your custom dataset to a format compatbile for [https://github.com/ELM-Research/ELM](https://github.com/ELM-Research/ELM). We provide several examples below as well as the ability to upload the mapped dataset to Huggingface. These are not required to do as we have already uploaded most datasets on Huggingface. Here are the currently supported datasets.
+
+| data  | Link        |
+|----------|------------|
+| [ecg-qa-ptbxl-250-2500](https://arxiv.org/abs/2306.15681)  | [willxxy/ecg-qa-ptbxl-250-2500](https://huggingface.co/datasets/willxxy/ecg-qa-ptbxl-250-2500)   |
+| [ecg-qa-mimic-iv-ecg-250-2500](https://arxiv.org/abs/2306.15681) | [willxxy/ecg-qa-mimic-iv-ecg-250-2500](https://huggingface.co/datasets/willxxy/ecg-qa-mimic-iv-ecg-250-2500) |
+| [pretrain-mimic-250-2500](https://arxiv.org/abs/2408.08849)  | [willxxy/pretrain-mimic-250-2500](https://huggingface.co/datasets/willxxy/pretrain-mimic-250-2500)   |
+| [ecg-grounding-250-2500](https://www.arxiv.org/abs/2503.06073)    | [willxxy/ecg-grounding-250-2500](https://huggingface.co/datasets/willxxy/ecg-grounding-250-2500)     |
+| [ecg-instruct-pulse-250-2500](https://arxiv.org/abs/2410.19008)     | [willxxy/ecg-instruct-pulse-250-2500](https://huggingface.co/datasets/willxxy/ecg-instruct-pulse-250-2500)      |
+| [ecg-bench-pulse-250-2500](https://arxiv.org/abs/2410.19008)     | [willxxy/ecg-bench-pulse-250-2500](https://huggingface.co/datasets/willxxy/ecg-bench-pulse-250-2500)      |
+| [ecg-instruct-45k-250-2500](https://arxiv.org/abs/2408.08849)     | [willxxy/ecg-instruct-45k-250-2500](https://huggingface.co/datasets/willxxy/ecg-instruct-45k-250-2500)      |
 
 #### ECG-QA dataset curated by [ECG-QA, Oh et al.](https://github.com/Jwoo5/ecg-qa)
 
