@@ -66,14 +66,20 @@ class ECGComprehension(SyntheticDataset):
                 if numeric_type == "r_peak_count":
                     prompt = "Given the ECG signal, count the number of R-peaks."
                     r_peak_count = self.r_peak_count(ecg, self.args.target_sf)
+                    if r_peak_count is None:
+                        continue
                     answer = f"{r_peak_count}"
                 elif numeric_type == "heart_rate_bpm_int":
                     prompt = "Count the R-peaks in the ECG signal, then compute BPM = 60 x (Number of R-peaks) / (duration in seconds). Output only the BPM rounded to the nearest whole number."
                     hr_bpm = self.heart_rate_bpm(ecg, self.args.target_sf)
+                    if hr_bpm is None:
+                        continue
                     answer = f"{int(hr_bpm)}"
                 elif numeric_type == "heart_rate_bpm_float":
                     prompt = "Count the R-peaks in the ECG signal, then compute BPM = 60 x (Number of R-peaks) / (duration in seconds). Output only the BPM rounded to two decimal places."
                     hr_bpm = self.heart_rate_bpm(ecg, self.args.target_sf)
+                    if hr_bpm is None:
+                        continue
                     answer = f"{hr_bpm:.2f}"
                 text = [{"from": "human", "value": prompt},
                         {"from": "gpt", "value": answer }]
