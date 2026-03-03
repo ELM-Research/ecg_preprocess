@@ -1,8 +1,8 @@
-### ECG QA PTB-XL
+## ECG QA PTB-XL
 # uv run src/main.py \
 # --map ecg_qa_ptb_xl
 
-# ### ECG QA MIMIC-IV
+### ECG QA MIMIC-IV
 # uv run src/main.py \
 # --map ecg_qa_mimic_iv
 
@@ -28,5 +28,168 @@
 
 
 ### PULSE ECG Grounding
+# uv run src/main.py \
+# --map ecg_grounding
+
+# uv run src/main.py \
+# --map ecg_protocol_gg_cot
+
+### ECG Comprehension
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise flatline \
+# --per_len 1000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise flatline \
+# --per_len 2000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise flatline \
+# --per_len 3000
+
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise \
+# --per_len 1000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise \
+# --per_len 2000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise \
+# --per_len 3000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg flatline \
+# --per_len 1000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg flatline \
+# --per_len 2000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg flatline \
+# --per_len 3000
+
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type noise flatline \
+# --per_len 1000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type noise flatline \
+# --per_len 2000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type noise flatline \
+# --per_len 3000
+
+
+
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise \
+# --per_len 30000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise \
+# --per_len 60000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg noise \
+# --per_len 90000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg flatline \
+# --per_len 30000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg flatline \
+# --per_len 60000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type ecg flatline \
+# --per_len 90000
+
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type noise flatline \
+# --per_len 30000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type noise flatline \
+# --per_len 60000
+
+# uv run src/main.py \
+# --map ecg_comprehension \
+# --input_type noise flatline \
+# --per_len 90000
+
+
 uv run src/main.py \
---map ecg_grounding
+--map ecg_comprehension \
+--ecg_numeric r_peak_count \
+--per_len 50000
+
+uv run src/main.py \
+--map ecg_comprehension \
+--ecg_numeric r_peak_count \
+--per_len 100000
+
+uv run src/main.py \
+--map ecg_comprehension \
+--ecg_numeric r_peak_count \
+--per_len 150000
+
+
+uv run src/main.py \
+--map ecg_comprehension \
+--ecg_numeric heart_rate_bpm_int \
+--per_len 50000
+
+uv run src/main.py \
+--map ecg_comprehension \
+--ecg_numeric heart_rate_bpm_int \
+--per_len 100000
+
+uv run src/main.py \
+--map ecg_comprehension \
+--ecg_numeric heart_rate_bpm_int \
+--per_len 150000
+
+
+uv run src/main.py \
+--map ecg_comprehension \
+--ecg_numeric heart_rate_bpm_float \
+--per_len 50000
+
+uv run src/main.py \
+--map ecg_comprehension \
+--ecg_numeric heart_rate_bpm_float \
+--per_len 100000
+
+uv run src/main.py \
+--map ecg_comprehension \
+--ecg_numeric heart_rate_bpm_float \
+--per_len 150000
