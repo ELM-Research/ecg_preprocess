@@ -12,8 +12,9 @@ def get_args() -> argparse.Namespace:
                                  "ecg_qa_ptb_xl", "ecg_instruct_45k", "ecg_bench_pulse",
                                  "ecg_instruct_pulse", "ecg_protocol_gg_cot", "ecg_comprehension"],
                         help="External dataset to map to base dataset")
-    parser.add_argument("--ecg_comprehension", type=str, nargs="+", default = None)
-    parser.add_argument("--ecg_comprehension_per_len", type = int, default = None)
+    parser.add_argument("--input_type", type=str, nargs="+", default = None)
+    parser.add_argument("--per_len", type = int, default = None)
+    parser.add_argument("--ecg_numeric", type = str, nargs="+", default = None)
     parser.add_argument("--toy", type=float, default=None, help="Create a toy dataset of the specified percentage (0-1)")
     parser.add_argument("--mix", type=str, default=None, help="Mix data: comma-separated list of JSON filenames")
     parser.add_argument("--target_sf", type=int, default=250, help="Target sampling frequency")
