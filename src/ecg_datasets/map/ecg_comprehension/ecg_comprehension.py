@@ -1,6 +1,9 @@
 from tqdm import tqdm
 import glob
 import string
+from collections import Counter
+
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.signal import find_peaks, butter, sosfiltfilt
 
@@ -89,7 +92,41 @@ class ECGComprehension(SyntheticDataset):
                     "text": text,
                     "name": name
                 })
-        return data
+        return self.filter_and_plot_numeric_distribution(data)
+
+    def filter_and_plot_numeric_distribution(self, data):
+        answer_counts = Counter(item["text"][1]["value"] for item in data)
+        filtered_data = [item for item in data if answer_counts[item["text"][1]["value"]] > 1]
+        filtered_counts = Counter(item["text"][1]["value"] for item in filtered_data)
+        plot_path = self.save_dir_json.replace(".json", "_distribution.png")
+        self.save_distribution_plot(filtered_counts, plot_path)
+        print(f"Discarded singleton numeric instances: {len(data) - len(filtered_data)}")
+        return filtered_data
+
+    def save_distribution_plot(self, counts: Counter, save_path: str):
+        if not counts:
+            plt.figure(figsize=(8, 4))
+            plt.title("Numeric value distribution (no values after singleton filtering)")
+            plt.xlabel("Numeric value")
+            plt.ylabel("Count")
+            plt.tight_layout()
+            plt.savefig(save_path, dpi=150, bbox_inches="tight")
+            plt.close()
+            return
+
+        sorted_items = sorted(counts.items(), key=lambda x: float(x[0]))
+        labels = [k for k, _ in sorted_items]
+        values = [v for _, v in sorted_items]
+        plt.figure(figsize=(max(10, len(labels) * 0.35), 4))
+        plt.bar(labels, values)
+        plt.title("Numeric value distribution (singleton values removed)")
+        plt.xlabel("Numeric value")
+        plt.ylabel("Count")
+        if len(labels) > 20:
+            plt.xticks(rotation=90)
+        plt.tight_layout()
+        plt.savefig(save_path, dpi=150, bbox_inches="tight")
+        plt.close()
 
     def format_mcq_question(self, prompt: str, choices: list[str]) -> str:
         labels = string.ascii_uppercase[:len(choices)]

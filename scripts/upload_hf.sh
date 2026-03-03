@@ -36,3 +36,8 @@ uv run src/upload_hf.py \
 --map_json src/ecg_datasets/map/ecg_grounding/ecg_grounding_hf.json \
 --fold_json src/ecg_datasets/map/ecg_grounding/ecg_grounding_hf_folds.json \
 --repo_id willxxy/ecg-grounding-250-2500
+
+# uv run src/upload_hf_numeric.py \
+# --map_json src/ecg_datasets/map/ecg_comprehension/ecg_comprehension_r_peak_count_2500_hf.json \
+# --fold_json src/ecg_datasets/map/ecg_comprehension/ecg_comprehension_r_peak_count_2500_hf_folds.json \
+# --repo_id willxxy/ecg-comprehension-r-peak-count-250-2500
