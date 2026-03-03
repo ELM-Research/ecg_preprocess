@@ -18,5 +18,11 @@ def build_map_dataset(args, logger):
     elif args.map == "ecg_instruct_pulse":
         from ecg_datasets.map.ecg_instruct_pulse import ECGInstructPulse
         map_dataset_builder = ECGInstructPulse(args, logger)
+    elif args.map == "ecg_protocol_gg_cot":
+        from ecg_datasets.map.ecg_protocol_gg_cot import ECGProtocolGGCot
+        map_dataset_builder = ECGProtocolGGCot(args, logger)
+    elif args.map == "ecg_comprehension":
+        from ecg_datasets.map.ecg_comprehension import ECGComprehension
+        map_dataset_builder = ECGComprehension(args, logger)
 
     map_dataset_builder.map_data()
