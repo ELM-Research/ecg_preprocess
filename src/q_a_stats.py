@@ -21,7 +21,7 @@ SPLITS = ["train", "test"]
 PLOT_TARGETS = ["answers", "questions"]
 
 MOST_COMMON = 40
-MAX_TEXT_CHARS = 80
+MAX_TEXT_CHARS = 40
 
 COLOR_MAP = {
     "answers": "#4F46E5",   # indigo
@@ -52,7 +52,7 @@ def collect_turn_texts(dataset, turn_key, target):
         for turn in item["text"][start::2]:
             text = turn.get(turn_key, "") if isinstance(turn, dict) else ""
             if text:
-                values.append(text.strip())
+                values.append(text.replace("\n", "").replace("<ecg>", "").replace("<image>", "").strip())
     return values
 
 
@@ -104,6 +104,10 @@ def plot_top_counts(counter, target, data_name, split, top_k, max_text_chars):
     plt.close(fig)
     print(f"Saved: {output}")
 
+TITLE_MAPPING = {
+    "ecg-qa-cot-not-cot" : "ECG-QA-CoT",
+    "ecg-r1-no-rl": "ECG-Instruct"
+}
 
 def main():
     for data_name in DATA:
@@ -118,7 +122,7 @@ def main():
                 plot_top_counts(
                     Counter(texts),
                     target=target,
-                    data_name=data_name,
+                    data_name=TITLE_MAPPING[data_name],
                     split=split,
                     top_k=MOST_COMMON,
                     max_text_chars=MAX_TEXT_CHARS,
